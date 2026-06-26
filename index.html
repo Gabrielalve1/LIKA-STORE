@@ -1,3 +1,13 @@
+Aqui está o código corrigido.
+
+**O que foi feito:**
+1.  Removi todos os prefixos `assets/` dos caminhos das imagens no HTML e no JavaScript.
+2.  Agora as imagens buscam direto na raiz (ex: `img/p1.jpg`, `img/logo-dark.png`).
+3.  **Atenção:** Certifique-se de que suas imagens estão organizadas assim na pasta do projeto:
+    *   `index.html`
+    *   `img/` (pasta com todas as fotos: p1.jpg, p2.jpg, hero1.jpg, logo-dark.png, etc.)
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -254,7 +264,7 @@ footer{background:var(--dark);color:#cabfb2;padding:72px 0 30px}
 <header>
   <div class="wrap nav">
     <svg class="burger" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a1614" stroke-width="1.6"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    <a href="#" class="logo"><img src="assets/img/logo-dark.png" alt="LIKA STORE"></a>
+    <a href="#" class="logo"><img src="img/logo-dark.png" alt="LIKA STORE"></a>
     <nav class="nav-links">
       <a href="#novidades">Novidades</a>
       <a href="#colecao">Coleção</a>
@@ -272,7 +282,7 @@ footer{background:var(--dark);color:#cabfb2;padding:72px 0 30px}
 </header>
 
 <section class="hero">
-  <img src="assets/img/hero1.jpg" alt="LIKA STORE">
+  <img src="img/hero1.jpg" alt="LIKA STORE">
   <div class="hero-c">
     <div class="kick">Coleção 2026</div>
     <h1>Sua essência<br><em>em cada look</em></h1>
@@ -355,7 +365,7 @@ footer{background:var(--dark);color:#cabfb2;padding:72px 0 30px}
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <div class="foot-logo"><img src="assets/img/logo-white.png" alt="LIKA STORE"></div>
+        <div class="foot-logo"><img src="img/logo-white.png" alt="LIKA STORE"></div>
         <p>Looks casuais e sofisticados para mulheres que amam se vestir bem. Rua Alan Kardec, 604 — Jd. Cruzeiro do Sul, São Carlos-SP.</p>
       </div>
       <div class="foot-col"><h5>Loja</h5><a href="#novidades">Novidades</a><a href="#colecao">Coleção</a><a href="#ofertas">Ofertas</a><a href="#sobre">Sobre</a></div>
@@ -430,7 +440,7 @@ function card(p){
   const i = P.indexOf(p);
   const catLbl={vestido:'Vestido',blusa:'Blusa',calca:'Calça',conjunto:'Conjunto'}[p.cat]||p.cat;
   return `<div class="card" data-cat="${p.cat}" onclick="openProd(${i})">
-    <div class="ph">${tag}<img src="assets/img/${p.img}.jpg" alt="">
+    <div class="ph">${tag}<img src="img/${p.img}.jpg" alt="">
       <div class="add" onclick="openProd(${i});event.stopPropagation()"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Ver opções</div>
     </div>
     <div class="info"><div class="ct">${catLbl}</div><h3>${p.name}</h3>${price}</div>
@@ -461,7 +471,7 @@ function openProd(i){
   }).join('');
   const colorsHtml=COLORS.map((c,ci)=>`<button class="pm-cl${ci===0?' on':''}" onclick="pickColor('${c}',this)">${c}</button>`).join('');
   document.getElementById('pmBox').innerHTML=`
-    <div class="pm-img"><img src="assets/img/${p.img}.jpg" alt=""></div>
+    <div class="pm-img"><img src="img/${p.img}.jpg" alt=""></div>
     <div class="pm-info">
       <button class="pm-x" onclick="closeProd()" aria-label="Fechar">&times;</button>
       <div class="pm-sku">REF: ${skuOf(i)}</div>
@@ -517,7 +527,7 @@ function renderCart(){
   body.innerHTML=items.map(([k,q])=>{
     const {i,size,color}=keyParts(k);const p=P[i];
     return `<div class="cd-item">
-      <img src="assets/img/${p.img}.jpg" alt="">
+      <img src="img/${p.img}.jpg" alt="">
       <div class="cd-it-info">
         <div class="ct">Tam ${size} • ${color}</div>
         <h4>${p.name}</h4>
@@ -570,3 +580,4 @@ document.querySelectorAll('.cat-pill').forEach(p=>p.onclick=()=>{
 </script>
 </body>
 </html>
+```
